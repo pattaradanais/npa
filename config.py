@@ -1,3 +1,3 @@
 
 DEBUG = False
-ADMINS = 'admin@admin.com'
+ADMIN = 'admin@admin.com'

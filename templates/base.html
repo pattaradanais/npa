@@ -20,7 +20,7 @@
              <div class="navbar-nav">
                 <a class="nav-item nav-link" href="{{ url_for('home.index') }}">Home</a>
                 <a class="nav-item nav-link" href="#">Property</a>
-                {% if session['email'] == config.ADMINS %}
+                {% if session['email'] == config.ADMIN %}
                 <a class="nav-item nav-link" href="{{ url_for('admin.index') }}">Admin</a>
                 {% endif %}
                 {% if session['email'] %}
