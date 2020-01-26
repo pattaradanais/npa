@@ -3,6 +3,6 @@ pymongo
 bs4
 requests
 dataclasses
-python-dotenv
 passlib
 dnspython
+uwsgi

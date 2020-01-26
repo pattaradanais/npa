@@ -13,8 +13,7 @@ def requires_login(f: Callable) -> Callable:
 
     return decorated_function
 
-#admin@admin.com
-#adminnpacs41
+
 def requires_admin(f: Callable) -> Callable:
     @functools.wraps(f)
     def decorated_function(*args, **kwargs):

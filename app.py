@@ -6,15 +6,20 @@ from views.users import user_blueprint
 from views.admin import admin_blueprint
 from views.home import home_blueprint
 from models.user.user import User
+from common.database import Database
 
 app = Flask(__name__)
-
+app.config.from_object('config')
 app.secret_key = os.urandom(64)
-app.config.update(
-    ADMIN=os.environ.get('ADMIN')
-  
-)
 
+# app.config.update(
+#     ADMIN=os.environ.get('ADMIN')
+  
+# )
+
+@app.before_first_request
+def init_db():
+    Database.initialize()
 
 app.register_blueprint(home_blueprint, url_prefix="/")
 # app.register_blueprint(alert_blueprint, url_prefix="/alerts")
@@ -39,4 +44,4 @@ def user_data():
 #     return render_template('base.html', user=user)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=True)
+    app.run()
