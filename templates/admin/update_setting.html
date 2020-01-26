@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form">
+    <form action="{{ url_for('admin.update_setting') }}" method="post">
+        <label for="source-select">Source</label>
+        <select class="custom-select" name="source-select" id="source-select" >
+            {% for elem in all_elem %}
+                <option value="{{elem.source}}">{{elem.source_full_name}}</option>
+                
+            {% endfor %}
+    
+        </select>
+        <div class="form-group">
+            <label for="list_page_url">Source URL</label>
+            <input type="text" class="form-control" id="list_page_url" name="list_page_url"  placeholder="https/...." aria-describedby="list_page_url_help">
+            <small class="list_page_url_help text-muted">Should be fist page of property list not item page</small>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+<script>
+    var addr = "0.0.0.0"
+    var port = "5000"
+    var selectedSourceElement = null
+    var selectedSource = null
+    function getSelected(){
+        selectedSourceElement = document.getElementById('source-select');
+        selectedSource = selectedSourceElement.value
+        return selectedSource
+       
+    }
+ 
+    function makeQuery(source){
+        var link = null
+        jQuery.get("http://"+addr+":"+port+"/admin/setting/"+source, function(result){
+            // myRes = jQuery.parseJSON(result);
+            // console.log(JSON.stringify(result))
+            link = result.list_page_url
+            
+            $('#list_page_url').val(link)
+        
+            // jsonQuery = JSON.stringify(result);
+    
+        });
+        return link
+    }
+    makeQuery(getSelected())
+    $('#source-select').change(function() {
+        makeQuery(getSelected())
+    });
+
+    
+
+</script>
+{% endblock %}
+

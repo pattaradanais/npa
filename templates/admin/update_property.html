@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Update</h1>
+</header>
+<section>
+    <div class="container">
+        {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+         {% endif %}
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action"  href="#">Check for update</a>
+            
+            <a class="list-group-item list-group-item-action" href="{{url_for('admin.scraping_process')}}">Update all <span>{{m}}</span> </a>
+            <div class="list-group">
+                <!-- {% for scrap_elem in all_elem %}
+                <a class="list-group-item list-group-item-action" style="padding-left: 3em; font-size: 14px;" href="">{{ scrap_elem.source_full_name }}</a>
+                {% endfor %} -->
+            </div>
+        </div>
+
+    </div> 
+</section>
+
+
+{% endblock content %}
