@@ -32,6 +32,7 @@ class Scrap(Model):
     size_ngan: float
     size_sq_wa: float
     deed_number: str
+    address: str
     update_date: str = field(default=now_string)
 
 
@@ -96,12 +97,14 @@ class Scrap(Model):
                 size_rai = size_split[0] #ex '0000' #send
                 size_ngan = 0 #ex '0' #send
                 size_sq_wa = size_split[1] #ex '52.0' #send
-            deed_number = list[5]
+                deed_number = list[5]
+                address = list[6]
             """
         -->0     [None,  not use
         -->1     'ราคาประกาศขาย', not use
         -->2     'บ้าน',     'property_type'
-        -->3     'B12284',  'properelseฤกษ์ลดา ปิ่นเกล้า-สาย 5  ซอย 8 ถนนบรมราชชนนี ต.บางเตย อ.สามพราน นครปฐม  ',
+        -->3     'B12284',  'properelse
+        ฤกษ์ลดา ปิ่นเกล้า-สาย 5  ซอย 8 ถนนบรมราชชนนี ต.บางเตย อ.สามพราน นครปฐม  ',
             store full 'address' and split 'province', 'destrict' ,'sub-district'
 
             """
@@ -185,7 +188,8 @@ class Scrap(Model):
             "size_rai": self.size_rai,
             "size_ngan": self.size_ngan,
             "size_sq_wa": self.size_sq_wa,
-            'deed_number': self.deed_number
+            'deed_number': self.deed_number,
+            "address": self.address
  
         }
 
