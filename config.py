@@ -1,3 +1,3 @@
 
 DEBUG = False
-ADMINS = frozenset('admin@admin.com')
+ADMINS = 'admin@admin.com'
