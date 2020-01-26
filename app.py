@@ -9,7 +9,7 @@ from models.user.user import User
 from common.database import Database
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object('.config')
 app.secret_key = os.urandom(64)
 
 # app.config.update(
