@@ -112,7 +112,7 @@ class Scrap(Model):
             entry_price = price.contents[0] #send
             tel = soup.find('div','inline-tel')
             source_tel =  tel.a.string  #send
-            Scrap(source, source_full_name, source_url, source_tel, img_list, map_img_list, property_type, property_id, entry_price, size_full, size_rai, size_ngan, size_sq_wa, deed_number,cls.now_string).save_to_mongo()
+            Scrap(source, source_full_name, source_url, source_tel, img_list, map_img_list, property_type, property_id, entry_price, size_full, size_rai, size_ngan, size_sq_wa, deed_number,address,cls.now_string).save_to_mongo()
             
 
                                             
