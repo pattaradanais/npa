@@ -6,4 +6,4 @@ requests==2.18.4
 dataclasses==0.7
 passlib==1.7.2
 dnspython==1.16.0
-uWSGI==2.18.4
+uWSGI==2.0.18
