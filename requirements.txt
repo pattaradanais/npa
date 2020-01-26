@@ -1,8 +1,9 @@
-Flask
-pymongo
-bs4
-requests
-dataclasses
-passlib
-dnspython
-uWSGI
+Flask==1.1.1
+pymongo==3.10.1
+bs4==0.0.1
+beautifulsoup4==4.8.2
+requests==2.18.4
+dataclasses==0.7
+passlib==1.7.2
+dnspython==1.16.0
+uWSGI==2.18.4
