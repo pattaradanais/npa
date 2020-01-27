@@ -6,7 +6,8 @@ property_blueprint = Blueprint('property',__name__)
 
 @property_blueprint.route('/',methods=['GET'])
 def index():
-    return render_template('property',data=Scrap.all())
+    data = Scrap.all()
+    return render_template('property',data=data)
 
 
 @property_blueprint.route('/<string:_id>',methods=['GET'])
