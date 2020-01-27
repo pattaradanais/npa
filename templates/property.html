@@ -6,6 +6,7 @@
     <section>
         <div class="container">
         {% for item in data %}
+            <a href="{{url_for('property.property_item',_id = item._id) }}">
             <div class="card" style="width: 18rem;">
                 <img src="{{ item.img_list[1] }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -14,6 +15,7 @@
                 <!-- <p class="card-text"></p> -->
                 </div>
             </div> 
+            </a>
         {% endfor %}
         </div>
     </section>

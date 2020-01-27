@@ -5,6 +5,7 @@ from flask import Flask, render_template,session
 from views.users import user_blueprint
 from views.admin import admin_blueprint
 from views.home import home_blueprint
+from views.property import property_blueprint
 from models.user.user import User
 from common.database import Database
 
@@ -27,6 +28,7 @@ app.register_blueprint(home_blueprint, url_prefix="/")
 # app.register_blueprint(store_blueprint, url_prefix="/stores")
 app.register_blueprint(user_blueprint, url_prefix="/users")
 app.register_blueprint(admin_blueprint, url_prefix="/admin")
+app.register_blueprint(property_blueprint, url_prefix="/properties")
 
 @app.context_processor
 def user_data():
