@@ -4,12 +4,12 @@ from models.scrap_data import Scrap
 
 property_blueprint = Blueprint('property',__name__)
 
-@property_blueprint.route('/',method=['GET'])
+@property_blueprint.route('/',methods=['GET'])
 def index():
     return render_template('property',data=Scrap.all())
 
 
-@property_blueprint.route('/<string:_id>',method=['GET'])
+@property_blueprint.route('/<string:_id>',methods=['GET'])
 def property_item(_id):
     item = Scrap.find_one_by("_id",_id)
     return render_template('property_item', item=item)
