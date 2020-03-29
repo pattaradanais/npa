@@ -1,7 +1,6 @@
 from dataclasses import dataclass, field
 from typing import Dict, List
-from bs4 import BeautifulSoup
-import requests
+
 import re
 import uuid
 import math
