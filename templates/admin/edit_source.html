@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block content %}
+<header><h1>Edit source</h1></header>
+<div class="form">
+    <form action="{{ url_for('admin.edit_source',source_id =source_data._id) }}" method="post">
+
+        <div class="form-row form-group"> 
+            <div class="col-md-2">
+                <label for="source_name">ID</label>
+                <input type="text" class="form-control" id="_id" name="_id" value="{{ source_data._id }}" placeholder="" disabled>
+            </div>
+            <div class="col-md-10">
+                <label for="source">source name</label>
+                <input type="text" class="form-control" id="source_name" name="source_name" value="{{ source_data.source_name }}" placeholder="" >
+            </div>
+        </div>
+        <div class="form-row form-group"> 
+            <div class="col-md-2">
+                <label for="source_name">initials name</label>
+                <input type="text" class="form-control" id="source" name="source" value="{{ source_data.source }}" placeholder="" >
+            </div>
+            <div class="col-md-10">
+                <label for="source">source url</label>
+                <input type="text" class="form-control" id="url" name="url"  value="{{ source_data.url }}" placeholder="" >
+            </div>
+        </div>
+
+        <!-- <div class="form-row form-group"> 
+            <div class="col-md-8">
+                <label for="source_name">Source name</label>
+                <input type="text" class="form-control" id="source_name" name="source_name" value="{{ source_data.source_name }}" placeholder="" >
+            </div>
+            <div class="col-md-4">
+                <label for="source">source name(short form)</label>
+                <input type="text" class="form-control" id="source" name="source" value="{{ source_data.source }}" placeholder="" >
+            </div>
+        </div> -->
+
+        <!-- <div class="form-group">
+                <label for="url">source url</label>
+                <input type="text" class="form-control" id="url" name="url" value="{{ source_data.url }}" placeholder="" >
+        </div> -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>base url</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="base_url" name="base_url" value="{{ source_data.base_url }}" placeholder="" >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>detail page</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="item_page" name="item_page" value="{{ source_data.item_page }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>next page</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="next_page" name="next_page" value="{{ source_data.next_page }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>image</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="img" name="img" value="{{ source_data.img }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>map</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="gg_map" name="gg_map" value="{{ source_data.gg_map }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>price</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="price" name="price" value="{{ source_data.price }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>type</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="asset_type" name="asset_type" value="{{ source_data.asset_type }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+ 
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>asset code</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="asset_code" name="asset_code" value="{{ source_data.asset_code }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>area</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="area" name="area" value="{{ source_data.area }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>deed number</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="deed_num" name="deed_num" value="{{ source_data.deed_num }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+ 
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>address</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="address" name="address" value="{{ source_data.address }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>contact</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="contact" name="contact" value="{{ source_data.contact }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>more_detail</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="more_detail" name="more_detail" value="{{ source_data.more_detail }}" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->        
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+            Delete
+          </button>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to delte this source?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+     
+        <div class="modal-footer">
+            <a class="btn btn-outline-danger" href="{{ url_for('admin.delete_source',source_id =source_data._id)  }}" role="button">Delete</a>
+            <!-- <button type="button" class="btn btn-outline-danger" href="">Delete</button> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

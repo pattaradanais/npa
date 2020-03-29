@@ -7,3 +7,5 @@ dataclasses
 passlib==1.7.2
 dnspython==1.16.0
 uWSGI==2.0.18
+scrapinghub[msgpack]
+flask-paginate

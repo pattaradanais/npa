@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <h1>Scraping setting</h1>
+</header>
+<section>
+    <div class="container">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" href="{{url_for('admin.start_scraping')}}">Start scraping</a>
+            <a class="list-group-item list-group-item-action" href="{{url_for('admin.new_source')}}">New source</a>
+
+            <a class="list-group-item list-group-item-action" data-toggle="collapse" href="#SubMenu">Edit source</a>
+            {% for elem in sources %}
+            <div class="collapse list-group-submenu" id="SubMenu">
+              
+                <a href="{{url_for('admin.edit_source',source_id = elem._id) }}" class="list-group-item list-group-subitem" data-parent="#SubMenu">{{ elem.source_name }}
+                </a>
+                
+            </div>
+            {% endfor %}
+
+        </div>
+
+
+    </div> 
+</section>
+{% endblock content %}

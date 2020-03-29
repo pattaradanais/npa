@@ -4,19 +4,28 @@
         <h1>Property</h1>
     </header>
     <section>
-        <div class="container">
+        <div class="card-deck">
         {% for item in data %}
-            <a href="{{url_for('property.property_item',_id = item._id) }}">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ item.img_list[1] }}" class="card-img-top" alt="...">
+            <a class="col-sm-4" style="text-decoration: none; color:black; margin-bottom: 50px;" href="{{url_for('property.property_item',_id = item._id) }}">
+            <div class="card " style="width: 20rem;height: 100%; ">
+                <img src="{{ item.asset_img[0] }}" class="card-img-top" style="height: 15rem; object-fit: cover;" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">{{ item.entry_price }}</h5>
-                <h6 class="card-title">{{ item.property_type}}</h6>
-                <!-- <p class="card-text"></p> -->
+                    <h5 class="card-title" style="text-decoration: none;">{{ item.price }}</h5>
+                    <h6 class="card-title" >{{ item.asset_type}}</h6>
+                    <p class="card-text">{{ item.address }}</p>
+                    <!-- <p class="card-text"><small class="text-muted">{{ item.update_date }}</small></p> -->
+                    
                 </div>
+                <div class="card-footer">
+                    <small class="text-muted">last update : {{ item.update_date }}</small>
+                  </div>
             </div> 
             </a>
+            
         {% endfor %}
+        {{ pagination.links }}
         </div>
+        
+        
     </section>
 {% endblock %}

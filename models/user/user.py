@@ -2,10 +2,12 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Dict, List
 
+
 from models.model import Model
 from common.database import Database
 from common.utils import Utils
 import models.user.errors as UserErrors
+from function.get_time import now_string
 
 
 @dataclass
@@ -16,12 +18,16 @@ class User(Model):
     lastname: str
     email: str
     password: str
-    _id: str = field(default_factory=lambda: uuid.uuid4().hex)
     # for user easy to register let user update other info after regiter success
     province: str = field(default="")  
     district: str = field(default="")
     sub_district: str = field(default="")
     salary: float = field(default=None)
+    interested: list = field(default_factory=lambda: [])
+    # permission: int
+    create_date: str = field(default="")
+    update_date: str = field(default="")
+    _id: str = field(default_factory=lambda: uuid.uuid4().hex)
 
     @classmethod
     def find_by_email(cls, email: str) -> "User":
@@ -55,6 +61,8 @@ class User(Model):
         :param password: password
         :return: True if registered successfully, or False otherwise (exceptions can also be raised)
         """
+
+
         if not Utils.email_is_valid(email):
             raise UserErrors.InvalidEmailError("The e-mail does not have the right format.")
         
@@ -62,7 +70,7 @@ class User(Model):
             cls.find_by_email(email)
             raise UserErrors.UserAlreadyRegisteredError("The e-mail you used to register already exists.")
         except UserErrors.UserNotFoundError:
-            User(name, lastname, email, Utils.hash_password(password)).save_to_mongo()
+            User(name, lastname, email, Utils.hash_password(password),create_date=now_string(),update_date=now_string()).save_to_mongo()
 
         return True
 
@@ -77,5 +85,8 @@ class User(Model):
             "province": self.province,
             "district": self.district,
             "sub_district": self.sub_district,
-            "salary": self.salary
+            "salary": self.salary,
+            "interested": self.interested,
+            "create_date": self.create_date,
+            "update_date":self.update_date
         }

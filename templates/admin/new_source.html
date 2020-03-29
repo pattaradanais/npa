@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+<header><h1>New source</h1></header>
+<div class="form">
+    <form action="{{ url_for('admin.new_source') }}" method="post">
+
+        <div class="form-row form-group"> 
+            <div class="col-md-2">
+                <label for="source_name">ID</label>
+                <input type="text" class="form-control" id="_id" name="_id" placeholder="" >
+            </div>
+            <div class="col-md-10">
+                <label for="source">source name</label>
+                <input type="text" class="form-control" id="source_name" name="source_name" placeholder="" >
+            </div>
+        </div>
+        <div class="form-row form-group"> 
+            <div class="col-md-2">
+                <label for="source_name">initials name</label>
+                <input type="text" class="form-control" id="source" name="source" placeholder="" >
+            </div>
+            <div class="col-md-10">
+                <label for="source">source url</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="" >
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+                <label for="url">source url</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="" >
+        </div> -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>base url</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="base_url" name="base_url" placeholder="" >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>detail page</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="item_page" name="item_page" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>next page</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="next_page" name="next_page" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>image</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="img" name="img" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>map</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="gg_map" name="gg_map" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>price</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="price" name="price" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>type</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="asset_type" name="asset_type" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+ 
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>asset code</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="asset_code" name="asset_code" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>area</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="area" name="area" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>deed number</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="deed_num" name="deed_num" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+ 
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+        <label>address</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="address" name="address" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>contact</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->       
+        <label>more_detail</label>
+        <div class="form-row form-group">
+            <div class="col-md-6">
+                <!-- <label for="attribute">HTML Attribute</label> -->
+                <input type="text" class="form-control" id="more_detail" name="more_detail" placeholder="Enter xpath ex. //div[@class='ex']/...." >
+            </div>
+        </div>
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->        
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+{% endblock %}
