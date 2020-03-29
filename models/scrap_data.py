@@ -104,7 +104,7 @@ class Scrap(Model):
             more_detail = str_concat(data['more_detail'])
             scrap_date = data['scraping_date'] 
 
-            print(_id)
+            # print(_id)
 
             Scrap(
                 _id=_id,
