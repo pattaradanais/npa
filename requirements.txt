@@ -1,11 +1,9 @@
 Flask==1.1.1
+scrapinghub==2.3.1
+flask-paginate==0.5.5
 pymongo==3.10.1
-bs4==0.0.1
-beautifulsoup4==4.8.2
 requests==2.18.4
 dataclasses
 passlib==1.7.2
 dnspython==1.16.0
 uWSGI==2.0.18
-scrapinghub[msgpack]
-flask-paginate
