@@ -1,4 +1,5 @@
 import json
+import threading
 from flask import Blueprint, render_template, request, redirect, url_for,jsonify,logging,flash
 from models.scrap_elem import ScrapElem
 from models.scrap_data import Scrap
@@ -19,8 +20,11 @@ def index():
 @requires_admin
 def update_property():
     # Scrap.integrateData()
+    x = threading.Thread(target=Scrap.integrateData())
+    
     try:
-        Scrap.integrateData()
+        # Scrap.integrateData()
+        x.start()
         flash('Update success', 'success')
     except:
         flash('Update fail', 'danger')
