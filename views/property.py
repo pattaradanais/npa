@@ -10,8 +10,8 @@ property_blueprint = Blueprint('property',__name__)
 
 @property_blueprint.route('/',methods=['GET', 'POST'])
 def index():
-    api = 'https://npa-project.herokuapp.com/api/properties?page='
-    # api = 'http://127.0.0.1:5000/api/properties?page='
+    # api = 'https://npa-project.herokuapp.com/api/properties?page='
+    api = 'http://127.0.0.1:5000/api/properties?page='
     page = request.args.get('page') 
 
     if not page:
