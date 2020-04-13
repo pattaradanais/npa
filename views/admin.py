@@ -16,19 +16,19 @@ def index():
     return render_template('admin/admin_index.html')
 
 
-@admin_blueprint.route('/update', methods=['GET', 'POST'])
-@requires_admin
-def update_property():
-    # Scrap.integrateData()
-    x = threading.Thread(target=Scrap.integrateData())
+# @admin_blueprint.route('/update', methods=['GET', 'POST'])
+# @requires_admin
+# def update_property():
+#     # Scrap.integrateData()
+#     x = threading.Thread(target=Scrap.integrateData())
     
-    try:
-        # Scrap.integrateData()
-        x.start()
-        flash('Update success', 'success')
-    except:
-        flash('Update fail', 'danger')
-    return render_template('admin/admin_index.html')
+#     try:
+#         # Scrap.integrateData()
+#         x.start()
+#         flash('Update success', 'success')
+#     except:
+#         flash('Update fail', 'danger')
+#     return render_template('admin/admin_index.html')
 
 # @admin_blueprint.route('/update/updating')
 # def scraping_process():

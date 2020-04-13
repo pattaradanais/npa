@@ -4,28 +4,177 @@
         <h1>Property</h1>
     </header>
     <section>
-        <div class="card-deck">
-        {% for item in data %}
-            <a class="col-sm-4" style="text-decoration: none; color:black; margin-bottom: 50px;" href="{{url_for('property.property_item',_id = item._id) }}">
-            <div class="card " style="width: 20rem;height: 100%; ">
-                <img src="{{ item.asset_img[0] }}" class="card-img-top" style="height: 15rem; object-fit: cover;" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title" style="text-decoration: none;">{{ item.price }}</h5>
-                    <h6 class="card-title" >{{ item.asset_type}}</h6>
-                    <p class="card-text">{{ item.address }}</p>
-                    <!-- <p class="card-text"><small class="text-muted">{{ item.update_date }}</small></p> -->
-                    
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">last update : {{ item.update_date }}</small>
-                  </div>
-            </div> 
-            </a>
-            
-        {% endfor %}
-        {{ pagination.links }}
-        </div>
+        <form class="container row" method="POST" >
+    
+  
+            <div class="form-group col-3">
+              <label for="province">province</label>
+              <select id="province" name="province" class="form-control" onchange="get_district()">
+                <option value="" selected>เลือกจังหวัด</option>
+              </select>
+            </div>
         
+            <div class="form-group col-3">
+              <label for="district">district</label>
+              <select id="district" name="district" class="form-control" onchange="get_sub_district()">
+                <option  value="" selected>เลือกอำเภอ</option>
+              </select>
+            </div>
+        
+            <div class="form-group col-3">
+              <label for="sub_district">sub_district</label>
+              <select id="sub_district"  name="sub_district" class="form-control">
+                <option  value="" selected>เลือกตำบล</option>
+              </select>
+            </div>
+            
+            <div class="form-group col-3">
+              <label for="asset_type">asset_type</label>
+              <select   id="asset_type"  name="asset_type" class="form-control">
+                <option value="" selected>ประเภททรัพย์</option>
+        
+              </select>
+            </div>
+            <div class='col-12'>
+              <button type="submit" class="btn btn-primary float-right" >Search</button>
+            </div>
+          </form>
+          {% if total > 1 %}             <!-- #Ignore pagination if you get no results -->
+            {{ pagination.info }}
+          {% endif %}  
+          <div class="card-deck">
+            {%if count <= 0  %}
+              <h1>{{ data }}</h1>
+            {% endif %}
+            {%if count > 0  %}
+            {% for item in data %}
+                <a class="col-sm-4" style="text-decoration: none; color:black; margin-bottom: 50px;" href="{{url_for('property.property_item',_id = item._id) }}">
+                <div class="card " style="width: 20rem;height: 100%; ">
+                    {% if item.status == 0 %}
+                    <span class="product-new-label">New</span>
+                    {% endif %}
+                    <img src="{{ item.asset_img[0] }}" class="card-img-top" style="height: 15rem; object-fit: cover;" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-decoration: none;">{{ item.price }}</h5>
+                        <h6 class="card-title" >{{ item.asset_type}}</h6>
+                        <p class="card-text">{{ item.address }}</p>
+                        <!-- <p class="card-text"><small class="text-muted">{{ item.update_date }}</small></p> -->
+                        
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">last update : {{ item.update_date }}</small>
+                      </div>
+                </div> 
+                </a>
+                
+            {% endfor %}
+            {% endif %}
+            
+            {{ pagination.links }}
         
     </section>
+    <script>
+        var obj
+        
+        fetch('/api/addresslist').then(response => {
+            return response.json();
+          }).then(data => {
+            obj = data
+            let output = '<option value="" selected>เลือกจังหวัด</option>'
+            for (var i = 0 in data){
+                output += `
+                <option value="${data[i]['province']['name']}">${data[i]['province']['name']}</option>
+                `  
+            }
+            document.getElementById('province').innerHTML = output
+          
+        
+            //console.log(data);
+          }).catch(err => {
+            // Do something for an error here
+          });
+        
+          fetch('/api/addresslist').then(response => {
+            return response.json();
+          }).then(data => {
+            obj = data
+            let output = '<option value="" selected>เลือกจังหวัด</option>'
+            for (var i = 0 in data){
+                output += `
+                <option value="${data[i]['province']['name']}">${data[i]['province']['name']}</option>
+                `  
+            }
+            document.getElementById('province').innerHTML = output
+          
+        
+            //console.log(data);
+          }).catch(err => {
+            // Do something for an error here
+          });
+        
+          fetch('/api/type').then(response => {
+            return response.json();
+          }).then(data => {
+            let output = '<option value="" selected>ประเภททรัพย์</option>'
+            for (var i = 0 in data['result']){
+                output += `
+                <option value="${data['result'][i]['type']}">${data['result'][i]['type']}(${data['result'][i]['count']})</option>
+                `  
+            }
+            document.getElementById('asset_type').innerHTML = output
+          
+        
+            //console.log(data);
+          }).catch(err => {
+            // Do something for an error here
+          });
+         
+        function get_district(){
+          p = document.getElementById('province');
+          selected = p.value;
+          //console.log(selected)
+          let output = '<option value="" selected>เลือกอำเภอ</option>'
+          for (var i = 0 in obj){
+              //console.log(data[i]['province']['name'])
+              if( obj[i]['province']['name'] == selected){
+                for (var j = 0 in obj[i]['province']['amphoes']){
+                  output += `
+                    <option value="${obj[i]['province']['amphoes'][j]['name']}">${obj[i]['province']['amphoes'][j]['name']}</option>
+                    `
+                }
+              } 
+          }
+          document.getElementById('district').innerHTML = output
+        }
+        function get_sub_district(){
+          p = document.getElementById('province');
+          d = document.getElementById('district')
+          p_selected = p.value;
+          d_selected = d.value;
+          let output = '<option value="" selected>เลือกตำบล</option>'
+          for (var i = 0 in obj){
+            //console.log(data[i]['province']['name'])
+            if( obj[i]['province']['name'] == p_selected){
+              for (var j = 0 in obj[i]['province']['amphoes']){
+                if(obj[i]['province']['amphoes'][j]['name'] == d_selected){
+                  for ( var k = 0 in obj[i]['province']['amphoes'][j]['tambons']){
+                    output += `
+                    <option value="${obj[i]['province']['amphoes'][j]['tambons'][k]['name']}">${obj[i]['province']['amphoes'][j]['tambons'][k]['name']}</option>
+                    `
+                  }
+                }
+              }
+            } 
+        }
+          document.getElementById('sub_district').innerHTML = output
+        }
+        
+        
+          function test(){
+            console.log(obj)
+          }
+        
+
+        </script>
 {% endblock %}
+

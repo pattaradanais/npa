@@ -7,9 +7,12 @@ from views.property import property_blueprint
 from models.user.user import User
 from common.database import Database
 from datetime import timedelta
+from api.property import AssetType,Property,AddressJson,AddressJsonList,AddressJsonRaw
+from flask_restful import Resource, Api
 
 
 app = Flask(__name__)
+api = Api(app)
 app.config.from_object('config')
 app.secret_key = os.urandom(64)
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=60)
@@ -29,6 +32,12 @@ app.register_blueprint(home_blueprint, url_prefix="/")
 app.register_blueprint(user_blueprint, url_prefix="/users")
 app.register_blueprint(admin_blueprint, url_prefix="/admin")
 app.register_blueprint(property_blueprint, url_prefix="/properties")
+
+api.add_resource(Property, '/api/properties')
+api.add_resource(AssetType, '/api/type')
+api.add_resource(AddressJson, '/api/address')
+api.add_resource(AddressJsonList, '/api/addresslist')
+api.add_resource(AddressJsonRaw, '/api/addressraw')
 
 @app.context_processor
 def user_data():

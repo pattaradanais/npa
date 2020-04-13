@@ -69,67 +69,67 @@ class Scrap(Model):
     def get_raw_data(cls):
         return cls.all_by_collection("raw_data") 
 
-    @classmethod
-    def integrateData(cls):
-        # raw = self.get_raw_data()
-        raw = Database.find('raw_data',{})
-        for data in raw:
-            _id = data['_id']
-            source = data['source']
-            asset_url = data['url'] 
-            asset_img = data['img']
-            try:
-                gg_map = data['gg_map'][0]
-            except:
-                gg_map = "Google map not found"
-            price = str_concat_nospace(data['price']).strip()
-            asset_type = str_concat_nospace(data['asset_type'])
-            asset_code = str_concat_nospace(data['asset_code'])
+    # @classmethod
+    # def integrateData(cls):
+    #     # raw = self.get_raw_data()
+    #     raw = Database.find('raw_data',{})
+    #     for data in raw:
+    #         _id = data['_id']
+    #         source = data['source']
+    #         asset_url = data['url'] 
+    #         asset_img = data['img']
+    #         try:
+    #             gg_map = data['gg_map'][0]
+    #         except:
+    #             gg_map = "Google map not found"
+    #         price = str_concat_nospace(data['price']).strip()
+    #         asset_type = str_concat_nospace(data['asset_type'])
+    #         asset_code = str_concat_nospace(data['asset_code'])
 
-            area_dict = area_split(str_concat_nospace(data['area'])) 
-            area = data['area'][0]
-            area_rai = float(area_dict['rai'])
-            area_ngan = float(area_dict['ngan'])
-            area_sq_wa = float(area_dict['sq_wa'])
+    #         area_dict = area_split(str_concat_nospace(data['area'])) 
+    #         area = data['area'][0]
+    #         area_rai = float(area_dict['rai'])
+    #         area_ngan = float(area_dict['ngan'])
+    #         area_sq_wa = float(area_dict['sq_wa'])
 
-            deed_num = str_concat(data['deed_num'])
-            address = str_concat(data['address'])
-            address = address.strip()
-            address_dict = address_check(address)
-            province = address_dict['province']
-            district = address_dict['district']
-            sub_district = address_dict['sub_district']
+    #         deed_num = str_concat(data['deed_num'])
+    #         address = str_concat(data['address'])
+    #         address = address.strip()
+    #         address_dict = address_check(address)
+    #         province = address_dict['province']
+    #         district = address_dict['district']
+    #         sub_district = address_dict['sub_district']
 
-            contact = str_concat_comma(data['contact']) 
-            more_detail = str_concat(data['more_detail'])
-            scrap_date = data['scraping_date'] 
+    #         contact = str_concat_comma(data['contact']) 
+    #         more_detail = str_concat(data['more_detail'])
+    #         scrap_date = data['scraping_date'] 
 
-            # print(_id)
+    #         # print(_id)
 
-            Scrap(
-                _id=_id,
-                source=source,
-                asset_url=asset_url,
-                asset_img=asset_img,
-                gg_map=gg_map,
-                price=price,
-                asset_type=asset_type,
-                asset_code=asset_code,
-                area=area,
-                area_rai=area_rai,
-                area_ngan=area_ngan,
-                area_sq_wa=area_sq_wa,
-                deed_num=deed_num,
-                address=address,
-                province=province,
-                district=district,
-                sub_district=sub_district,
-                contact=contact,
-                more_detail=more_detail,
-                update_date=now_string(),
-                scrap_date=scrap_date
-                ).save_to_mongo()
-        return "Update success"
+    #         Scrap(
+    #             _id=_id,
+    #             source=source,
+    #             asset_url=asset_url,
+    #             asset_img=asset_img,
+    #             gg_map=gg_map,
+    #             price=price,
+    #             asset_type=asset_type,
+    #             asset_code=asset_code,
+    #             area=area,
+    #             area_rai=area_rai,
+    #             area_ngan=area_ngan,
+    #             area_sq_wa=area_sq_wa,
+    #             deed_num=deed_num,
+    #             address=address,
+    #             province=province,
+    #             district=district,
+    #             sub_district=sub_district,
+    #             contact=contact,
+    #             more_detail=more_detail,
+    #             update_date=now_string(),
+    #             scrap_date=scrap_date
+    #             ).save_to_mongo()
+    #     return "Update success"
 
 
 

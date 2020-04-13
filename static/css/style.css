@@ -1,0 +1,9 @@
+.product-new-label{
+    color:#fff;
+    background-color:#ef5777;
+    font-size:12px;
+    text-transform:uppercase;
+    padding:2px 7px;
+    display:block;
+    position:absolute;
+    top:10px;left:0}
